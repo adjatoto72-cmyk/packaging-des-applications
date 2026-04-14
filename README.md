@@ -83,6 +83,23 @@ pour connaitre le username il faut en mode powershell taoper la commande""WHOAMI
 <img width="1633" height="783" alt="Capture d&#39;écran 2026-04-13 205612" src="https://github.com/user-attachments/assets/263b3b56-e41e-4f70-a8d8-0926ea19f4ab" />
 
 ```
+Si ça ne marche toujours pas
+
+👉 Mets carrément tout en autorisé (lab uniquement ⚠️) :
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "*"
+
+et apres 
+👉 Utilise directement l’IP :
+
+Enter-PSSession -ComputerName 10.1.0.4 -Credential CLIENT\kpevika
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/822a40f9-74f6-401c-a36f-dba2d9ba6b14" />
+
+
+Resultat attendu 
+
+<img width="928" height="82" alt="image" src="https://github.com/user-attachments/assets/4a49f7c7-6a26-43d9-a5fc-6bd4b517d811" />
 
 ### 5. Préparation du package
 
