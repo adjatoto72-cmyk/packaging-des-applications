@@ -29,14 +29,14 @@ Mettre en place un environnement de test dans Azure pour simuler le déploiement
 * Création de deux VM Azure
 * Configuration réseau (VNet, NSG)
 * Test de connectivité (ping)
-<img width="1285" height="765" alt="Capture d&#39;écran 2026-04-13 203614" src="https://github.com/user-attachments/assets/f9dbf6cd-b45e-4d3f-a7ae-b0202ff71247" />
+<img width="985" height="565" alt="Capture d&#39;écran 2026-04-13 203614" src="https://github.com/user-attachments/assets/f9dbf6cd-b45e-4d3f-a7ae-b0202ff71247" />
 Le ping se fait après avoir demarrer les deux machines virtuelles et il s'agit de pping les adresses Privées
 Assurez-vous de bien pinger l'adresse IP privée et non l'IP publique.
 
 Pinger de 10.1.0.4 vers 10.1.0.5 (et inversement).
-<img width="1203" height="793" alt="Capture d&#39;écran 2026-04-13 201756" src="https://github.com/user-attachments/assets/a398b685-8fe1-4b03-9d26-f95d58336bb0" />
+<img width="900" height="693" alt="Capture d&#39;écran 2026-04-13 201756" src="https://github.com/user-attachments/assets/a398b685-8fe1-4b03-9d26-f95d58336bb0" />
 Le ping entre IP publiques sur Azure échoue presque toujours sans une configuration spécifique de Load Balancer ou de NAT.
-<img width="1479" height="800" alt="Capture d&#39;écran 2026-04-13 204626" src="https://github.com/user-attachments/assets/f79890ca-25ec-452e-83a1-bda69003029a" />
+<img width="979" height="600" alt="Capture d&#39;écran 2026-04-13 204626" src="https://github.com/user-attachments/assets/f79890ca-25ec-452e-83a1-bda69003029a" />
 
 
 
@@ -81,7 +81,7 @@ Enable-PSRemoting -Force
 Enter-PSSession -ComputerName CLIENT -Credential CLIENT\username
 ```
 pour connaitre le username il faut en mode powershell taoper la commande""WHOAMI"
-<img width="1333" height="783" alt="Capture d&#39;écran 2026-04-13 205612" src="https://github.com/user-attachments/assets/263b3b56-e41e-4f70-a8d8-0926ea19f4ab" />
+<img width="933" height="583" alt="Capture d&#39;écran 2026-04-13 205612" src="https://github.com/user-attachments/assets/263b3b56-e41e-4f70-a8d8-0926ea19f4ab" />
 
 
 
@@ -108,7 +108,7 @@ New-PSDrive -Name Z -PSProvider FileSystem -Root "\\CLIENT\C$" -Credential (Get-
 ```
 
 * Copie du fichier MSI vers la machine CLIENT
-<img width="939" height="149" alt="Capture d&#39;écran 2026-04-13 211125" src="https://github.com/user-attachments/assets/94ebd911-fb4e-499d-ba06-c8ce5752091f" />
+<img width="840" height="149" alt="Capture d&#39;écran 2026-04-13 211125" src="https://github.com/user-attachments/assets/94ebd911-fb4e-499d-ba06-c8ce5752091f" />
 
 ### 7. Déploiement à distance
 
@@ -117,7 +117,7 @@ Invoke-Command -ComputerName CLIENT -ScriptBlock {
     Start-Process msiexec.exe -ArgumentList "/i C:\Temp\chrome.msi /qn" -Wait
 } -Credential CLIENT\username
 ```
-<img width="940" height="724" alt="Capture d&#39;écran 2026-04-13 213808" src="https://github.com/user-attachments/assets/3c05c294-2134-404f-8c43-abd2fc728ae4" />
+<img width="840" height="724" alt="Capture d&#39;écran 2026-04-13 213808" src="https://github.com/user-attachments/assets/3c05c294-2134-404f-8c43-abd2fc728ae4" />
 
 
 ### 8. Vérification
@@ -135,7 +135,7 @@ Test-Path "C:\Program Files\Google\Chrome\Application\chrome.exe"
 ```powershell
   True
 ```
-<img width="1520" height="780" alt="Capture d&#39;écran 2026-04-13 221044" src="https://github.com/user-attachments/assets/bd53111f-c3ed-4ab2-896b-47672218c759" />
+<img width="920" height="580" alt="Capture d&#39;écran 2026-04-13 221044" src="https://github.com/user-attachments/assets/bd53111f-c3ed-4ab2-896b-47672218c759" />
 
 Chrome est installé à distance = SUCCÈS TOTAL
 
