@@ -29,16 +29,17 @@ Mettre en place un environnement de test dans Azure pour simuler le déploiement
 * Création de deux VM Azure
 * Configuration réseau (VNet, NSG)
 * Test de connectivité (ping)
-
+<img width="1585" height="865" alt="Capture d&#39;écran 2026-04-13 203614" src="https://github.com/user-attachments/assets/f9dbf6cd-b45e-4d3f-a7ae-b0202ff71247" />
 Le ping se fait après avoir demarrer les deux machines virtuelles et il s'agit de pping les adresses Privées
 Assurez-vous de bien pinger l'adresse IP privée et non l'IP publique.
 
 Pinger de 10.1.0.4 vers 10.1.0.5 (et inversement).
-
-Le ping entre IP publiques sur Azure échoue presque toujours sans une configuration spécifique de Load Balancer ou de NAT.<img width="1479" height="1002" alt="Capture d&#39;écran 2026-04-13 204626" src="https://github.com/user-attachments/assets/f79890ca-25ec-452e-83a1-bda69003029a" />
-
-<img width="1585" height="865" alt="Capture d&#39;écran 2026-04-13 203614" src="https://github.com/user-attachments/assets/f9dbf6cd-b45e-4d3f-a7ae-b0202ff71247" />
 <img width="1703" height="993" alt="Capture d&#39;écran 2026-04-13 201756" src="https://github.com/user-attachments/assets/a398b685-8fe1-4b03-9d26-f95d58336bb0" />
+Le ping entre IP publiques sur Azure échoue presque toujours sans une configuration spécifique de Load Balancer ou de NAT.
+<img width="1479" height="1002" alt="Capture d&#39;écran 2026-04-13 204626" src="https://github.com/user-attachments/assets/f79890ca-25ec-452e-83a1-bda69003029a" />
+
+
+
 
 
 ### 2. Configuration des rôles
@@ -59,7 +60,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 Ou, plus simplement pour tester, désactivez temporairement le pare-feu public/privé dans le Panneau de Configuration.
 * Vérification des comptes utilisateurs locaux
 
-* ![Uploading Capture d'écran 2026-04-13 204626.png…]()
+
 
 
 ### 3. Activation de PowerShell Remoting
@@ -78,11 +79,11 @@ Enable-PSRemoting -Force
 
 ```powershell
 Enter-PSSession -ComputerName CLIENT -Credential CLIENT\username
-
+```
 pour connaitre le username il faut en mode powershell taoper la commande""WHOAMI"
 <img width="1633" height="783" alt="Capture d&#39;écran 2026-04-13 205612" src="https://github.com/user-attachments/assets/263b3b56-e41e-4f70-a8d8-0926ea19f4ab" />
 
-```
+
 
 ### 5. Préparation du package
 
@@ -101,7 +102,7 @@ Le fichier telechargé se met dans le C://Temp
 
 ```powershell
 New-Item -ItemType Directory -Path C:\Temp
-
+```
 ```powershell
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\CLIENT\C$" -Credential (Get-Credential)
 ```
@@ -115,8 +116,9 @@ New-PSDrive -Name Z -PSProvider FileSystem -Root "\\CLIENT\C$" -Credential (Get-
 Invoke-Command -ComputerName CLIENT -ScriptBlock {
     Start-Process msiexec.exe -ArgumentList "/i C:\Temp\chrome.msi /qn" -Wait
 } -Credential CLIENT\username
-<img width="940" height="724" alt="Capture d&#39;écran 2026-04-13 213808" src="https://github.com/user-attachments/assets/3c05c294-2134-404f-8c43-abd2fc728ae4" />
 ```
+<img width="940" height="724" alt="Capture d&#39;écran 2026-04-13 213808" src="https://github.com/user-attachments/assets/3c05c294-2134-404f-8c43-abd2fc728ae4" />
+
 
 ### 8. Vérification
 
@@ -132,7 +134,7 @@ Test-Path "C:\Program Files\Google\Chrome\Application\chrome.exe"
 👉 Si tu vois :
 ```powershell
   True
-
+```
 <img width="1920" height="1080" alt="Capture d&#39;écran 2026-04-13 221044" src="https://github.com/user-attachments/assets/bd53111f-c3ed-4ab2-896b-47672218c759" />
 
 Chrome est installé à distance = SUCCÈS TOTAL
